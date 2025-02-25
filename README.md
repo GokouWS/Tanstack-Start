@@ -12,5 +12,5 @@
 
 - [ ] Fix type errors in \_\_root.tsx from dark/light mode toggle (Look into new tailwind v4 themes)
 - [ ] Look into cause of hydration errors
-- [ ] Find why react-router has no HeadContent or Scripts imports
-- [ ] Update tailwind for v4
+- [x] Fix react-router has no HeadContent or Scripts imports
+- [x] Update tailwind for v4

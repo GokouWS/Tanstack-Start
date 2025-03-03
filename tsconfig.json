@@ -1,0 +1,26 @@
+{
+  "include": ["**/*.ts", "**/*.tsx"],
+  "compilerOptions": {
+    "strict": true,
+    "esModuleInterop": true,
+    "jsx": "react-jsx",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "allowSyntheticDefaultImports": true,
+    "lib": ["DOM", "DOM.Iterable", "ES2022"],
+    "isolatedModules": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "target": "ES2022",
+    "allowJs": true,
+    "forceConsistentCasingInFileNames": true,
+    "types": ["vinxi/types/client"],
+    "baseUrl": "./",
+    "paths": {
+      "~/*": ["./app/*"],
+      "#/*": ["./app/features/global/*"]
+    },
+    "noEmit": true,
+    "strictNullChecks": true
+  }
+}

@@ -3,8 +3,8 @@
 ## Functionality
 
 - [ ] Decide on a set folder structure, mainly for api routes, db, server functions
-- [ ] Add auth (likely clerk)
-- [ ] Add drizzle, prisma,mongoose (or branches for each)
+- [x] Add auth (likely clerk)
+- [x] Add DB/ORM (or branches multiple) added convex
 - [ ] Add superjson
 - [ ] Add seo
 

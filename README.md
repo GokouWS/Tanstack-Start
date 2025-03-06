@@ -14,6 +14,8 @@
 - [ ] Add seo
 - [ ] Add a protected route
 - [ ] Add vitest and react testing library
+- [x] Add a loader component
+- [ ] Move Nav to seperate component
 
 ## Issues
 

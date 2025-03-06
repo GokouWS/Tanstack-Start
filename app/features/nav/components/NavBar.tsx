@@ -1,9 +1,11 @@
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/tanstack-start";
-import { Link } from "@tanstack/react-router";
+import { Link, useRouterState } from "@tanstack/react-router";
+import { Loader } from "~/features/global/components/Loader";
 
 const NavBar = () => {
   return (
     <div className="flex gap-2 p-2 text-lg">
+      <LoadingIndicator />
       <Link
         to="/"
         activeProps={{
@@ -42,3 +44,16 @@ const NavBar = () => {
 };
 
 export default NavBar;
+
+function LoadingIndicator() {
+  const isLoading = useRouterState({ select: (s) => s.isLoading });
+  return (
+    <div
+      className={`h-12 transition-all duration-300 ${
+        isLoading ? `opacity-100 delay-300` : `opacity-0 delay-0`
+      }`}
+    >
+      <Loader />
+    </div>
+  );
+}

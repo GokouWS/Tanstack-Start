@@ -15,6 +15,7 @@ export const upsertFromClerk = internalMutation({
     const userAttributes = {
       name: `${data.first_name} ${data.last_name}`,
       externalId: data.id,
+      count: 0,
     };
 
     const user = await userByExternalId(ctx, data.id);

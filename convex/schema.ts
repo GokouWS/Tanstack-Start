@@ -6,7 +6,11 @@ const schema = defineSchema({
     name: v.string(),
     // this the Clerk ID, stored in the subject JWT field
     externalId: v.string(),
+    count: v.optional(v.number()),
   }).index("byExternalId", ["externalId"]),
+  count: defineTable({
+    count: v.number(),
+  }),
 });
 
 export default schema;

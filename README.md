@@ -17,6 +17,7 @@
 - [x] Add a loader component
 - [x] Add seperate nav component
 - [ ] Add Seperate counter component
+- [ ] Configure webhooks for storing clerk users in convex DB
 
 ## Issues
 

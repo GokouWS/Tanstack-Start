@@ -90,17 +90,12 @@ export const Route = createRootRouteWithContext<{
 });
 
 function RootComponent() {
-  // const context = useRouteContext({ from: Route.id });
   // const { theme } = Route.useLoaderData(); // Corrected: Use useLoaderData to get the loaded data
   return (
     // <ThemeProvider initialTheme={theme}>
-    // <ClerkProvider publishableKey={PUBLISHABLE_KEY}>
-    //   <ConvexProviderWithClerk client={context.convexClient} useAuth={useAuth}>
     <RootDocument>
       <Outlet />
     </RootDocument>
-    //   </ConvexProviderWithClerk>
-    // </ClerkProvider>
     // </ThemeProvider>
   );
 }

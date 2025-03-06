@@ -1,3 +1,8 @@
+# SETUP
+
+- Replace domain in app/convex/auth.config.ts
+- Add env variables for VITE_CLERK_PUBLISHABLE_KEY and CLERK_SECRET_KEY from API Keys tab in clerk project dashboard
+
 # TODO
 
 ## Functionality
@@ -7,6 +12,8 @@
 - [x] Add DB/ORM (or branches multiple) added convex
 - [ ] Add superjson
 - [ ] Add seo
+- [ ] Add a protected route
+- [ ] Add vitest and react testing library
 
 ## Issues
 

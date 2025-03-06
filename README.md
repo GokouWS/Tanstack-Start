@@ -16,8 +16,10 @@
 - [ ] Add and configure vitest and react testing library
 - [x] Add a loader component
 - [x] Add seperate nav component
-- [ ] Add Seperate counter component
+- [ ] Add a global counter component
+- [ ] Add a counter component that is stored in each user
 - [x] Configure webhooks for storing clerk users in convex DB
+- [ ] Add a theme toggle
 
 ## Issues
 

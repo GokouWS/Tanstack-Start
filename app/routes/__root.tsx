@@ -8,14 +8,7 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
-import {
-  ClerkProvider,
-  SignInButton,
-  SignedIn,
-  SignedOut,
-  UserButton,
-  useAuth,
-} from "@clerk/tanstack-start";
+import { ClerkProvider, useAuth } from "@clerk/tanstack-start";
 import { getAuth } from "@clerk/tanstack-start/server";
 
 import appCss from "~/styles/app.css?url";
@@ -26,9 +19,9 @@ import { ConvexProviderWithClerk } from "convex/react-clerk";
 import { createServerFn } from "@tanstack/react-start";
 import { getWebRequest } from "vinxi/http";
 import { useRouteContext } from "@tanstack/react-router";
-import { Link } from "@tanstack/react-router";
 import { NotFound } from "~/features/global/components/NotFound";
 import { DefaultCatchBoundary } from "~/features/global/components/DefaultCatchboundary";
+import NavBar from "~/features/nav/components/NavBar";
 
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 
@@ -111,41 +104,7 @@ function RootDocument({ children }: { readonly children: React.ReactNode }) {
             <HeadContent />
           </head>
           <body>
-            <div className="flex gap-2 p-2 text-lg">
-              <Link
-                to="/"
-                activeProps={{
-                  className: "font-bold",
-                }}
-                activeOptions={{ exact: true }}
-              >
-                Home
-              </Link>{" "}
-              <Link
-                to="/profile/$"
-                activeProps={{
-                  className: "font-bold",
-                }}
-              >
-                Profile
-              </Link>
-              <Link
-                to="/counter"
-                activeProps={{
-                  className: "font-bold",
-                }}
-              >
-                Counter
-              </Link>
-              <div className="ml-auto">
-                <SignedIn>
-                  <UserButton />
-                </SignedIn>
-                <SignedOut>
-                  <SignInButton mode="modal" />
-                </SignedOut>
-              </div>
-            </div>
+            <NavBar />
             {children}
             <ReactQueryDevtools buttonPosition="bottom-left" />
             <TanStackRouterDevtools position="bottom-right" />

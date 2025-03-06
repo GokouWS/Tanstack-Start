@@ -12,10 +12,11 @@
 - [x] Add DB/ORM (or branches multiple) added convex
 - [ ] Add superjson
 - [ ] Add seo
-- [ ] Add a protected route
-- [ ] Add vitest and react testing library
+- [x] Add a protected route
+- [ ] Add and configure vitest and react testing library
 - [x] Add a loader component
-- [ ] Move Nav to seperate component
+- [x] Add seperate nav component
+- [ ] Add Seperate counter component
 
 ## Issues
 

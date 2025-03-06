@@ -1,6 +1,6 @@
 // ThemeToggle.tsx
 import { Moon, Sun } from "lucide-react";
-import { useTheme } from "#/context/ThemeContext"; // Use the context hook!
+import { useTheme } from "@global/context/ThemeContext"; // Use the context hook!
 import { Button } from "./ui/button";
 import {
   DropdownMenu,
@@ -14,16 +14,16 @@ export function ThemeToggle() {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger asChild className="absolute right-2 top-2">
+      <DropdownMenuTrigger asChild className="absolute top-2 right-2">
         <Button variant="outline" size="icon">
           <Sun
             className={`h-[1.2rem] w-[1.2rem] transition-all ${
-              theme === "dark" ? "-rotate-90 scale-0" : "rotate-0 scale-100"
+              theme === "dark" ? "scale-0 -rotate-90" : "scale-100 rotate-0"
             }`}
           />
           <Moon
             className={`absolute h-[1.2rem] w-[1.2rem] transition-all ${
-              theme === "dark" ? "rotate-0 scale-100" : "rotate-90 scale-0"
+              theme === "dark" ? "scale-100 rotate-0" : "scale-0 rotate-90"
             }`}
           />
           <span className="sr-only">Toggle theme</span>

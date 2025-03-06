@@ -19,16 +19,16 @@ import {
 import { getAuth } from "@clerk/tanstack-start/server";
 
 import appCss from "~/styles/app.css?url";
-import { DefaultCatchBoundary } from "~/features/global/components/DefaultCatchboundary";
-import { NotFound } from "~/features/global/components/NotFound";
 import { ConvexQueryClient } from "@convex-dev/react-query";
 
 import { ConvexReactClient } from "convex/react";
 import { ConvexProviderWithClerk } from "convex/react-clerk";
-import { createServerFn } from "@tanstack/start";
+import { createServerFn } from "@tanstack/react-start";
 import { getWebRequest } from "vinxi/http";
 import { useRouteContext } from "@tanstack/react-router";
 import { Link } from "@tanstack/react-router";
+import { NotFound } from "~/features/global/components/NotFound";
+import { DefaultCatchBoundary } from "~/features/global/components/DefaultCatchboundary";
 
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 
@@ -122,12 +122,20 @@ function RootDocument({ children }: { readonly children: React.ReactNode }) {
                 Home
               </Link>{" "}
               <Link
-                to="/profile"
+                to="/profile/$"
                 activeProps={{
                   className: "font-bold",
                 }}
               >
                 Profile
+              </Link>
+              <Link
+                to="/counter"
+                activeProps={{
+                  className: "font-bold",
+                }}
+              >
+                Counter
               </Link>
               <div className="ml-auto">
                 <SignedIn>

@@ -1,5 +1,5 @@
 {
-  "include": ["**/*.ts", "**/*.tsx"],
+  "include": ["**/*.ts", "**/*.tsx", "app", "app.config.ts"],
   "compilerOptions": {
     "strict": true,
     "esModuleInterop": true,
@@ -18,7 +18,7 @@
     "baseUrl": "./",
     "paths": {
       "~/*": ["./app/*"],
-      "#/*": ["./app/features/global/*"]
+      "@global/*": ["./app/features/global/*"]
     },
     "noEmit": true,
     "strictNullChecks": true

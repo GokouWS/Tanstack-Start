@@ -11,10 +11,23 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
+import { Route as CounterImport } from './routes/counter'
+import { Route as AuthedImport } from './routes/_authed'
 import { Route as IndexImport } from './routes/index'
-import { Route as ProfileIndexImport } from './routes/profile/index'
+import { Route as AuthedProfileSplatImport } from './routes/_authed/profile.$'
 
 // Create/Update Routes
+
+const CounterRoute = CounterImport.update({
+  id: '/counter',
+  path: '/counter',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const AuthedRoute = AuthedImport.update({
+  id: '/_authed',
+  getParentRoute: () => rootRoute,
+} as any)
 
 const IndexRoute = IndexImport.update({
   id: '/',
@@ -22,10 +35,10 @@ const IndexRoute = IndexImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
-const ProfileIndexRoute = ProfileIndexImport.update({
-  id: '/profile/',
-  path: '/profile/',
-  getParentRoute: () => rootRoute,
+const AuthedProfileSplatRoute = AuthedProfileSplatImport.update({
+  id: '/profile/$',
+  path: '/profile/$',
+  getParentRoute: () => AuthedRoute,
 } as any)
 
 // Populate the FileRoutesByPath interface
@@ -39,51 +52,84 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
-    '/profile/': {
-      id: '/profile/'
-      path: '/profile'
-      fullPath: '/profile'
-      preLoaderRoute: typeof ProfileIndexImport
+    '/_authed': {
+      id: '/_authed'
+      path: ''
+      fullPath: ''
+      preLoaderRoute: typeof AuthedImport
       parentRoute: typeof rootRoute
+    }
+    '/counter': {
+      id: '/counter'
+      path: '/counter'
+      fullPath: '/counter'
+      preLoaderRoute: typeof CounterImport
+      parentRoute: typeof rootRoute
+    }
+    '/_authed/profile/$': {
+      id: '/_authed/profile/$'
+      path: '/profile/$'
+      fullPath: '/profile/$'
+      preLoaderRoute: typeof AuthedProfileSplatImport
+      parentRoute: typeof AuthedImport
     }
   }
 }
 
 // Create and export the route tree
 
+interface AuthedRouteChildren {
+  AuthedProfileSplatRoute: typeof AuthedProfileSplatRoute
+}
+
+const AuthedRouteChildren: AuthedRouteChildren = {
+  AuthedProfileSplatRoute: AuthedProfileSplatRoute,
+}
+
+const AuthedRouteWithChildren =
+  AuthedRoute._addFileChildren(AuthedRouteChildren)
+
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/profile': typeof ProfileIndexRoute
+  '': typeof AuthedRouteWithChildren
+  '/counter': typeof CounterRoute
+  '/profile/$': typeof AuthedProfileSplatRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/profile': typeof ProfileIndexRoute
+  '': typeof AuthedRouteWithChildren
+  '/counter': typeof CounterRoute
+  '/profile/$': typeof AuthedProfileSplatRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
-  '/profile/': typeof ProfileIndexRoute
+  '/_authed': typeof AuthedRouteWithChildren
+  '/counter': typeof CounterRoute
+  '/_authed/profile/$': typeof AuthedProfileSplatRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/profile'
+  fullPaths: '/' | '' | '/counter' | '/profile/$'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/profile'
-  id: '__root__' | '/' | '/profile/'
+  to: '/' | '' | '/counter' | '/profile/$'
+  id: '__root__' | '/' | '/_authed' | '/counter' | '/_authed/profile/$'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  ProfileIndexRoute: typeof ProfileIndexRoute
+  AuthedRoute: typeof AuthedRouteWithChildren
+  CounterRoute: typeof CounterRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  ProfileIndexRoute: ProfileIndexRoute,
+  AuthedRoute: AuthedRouteWithChildren,
+  CounterRoute: CounterRoute,
 }
 
 export const routeTree = rootRoute
@@ -97,14 +143,25 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/profile/"
+        "/_authed",
+        "/counter"
       ]
     },
     "/": {
       "filePath": "index.tsx"
     },
-    "/profile/": {
-      "filePath": "profile/index.tsx"
+    "/_authed": {
+      "filePath": "_authed.tsx",
+      "children": [
+        "/_authed/profile/$"
+      ]
+    },
+    "/counter": {
+      "filePath": "counter.tsx"
+    },
+    "/_authed/profile/$": {
+      "filePath": "_authed/profile.$.tsx",
+      "parent": "/_authed"
     }
   }
 }

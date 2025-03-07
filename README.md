@@ -13,7 +13,7 @@
 - [ ] Add superjson
 - [ ] Add seo
 - [x] Add a protected route
-- [ ] Add and configure vitest and react testing library
+- [x] Add and configure vitest and react testing library
 - [ ] Add and configure convex-test
 - [x] Add a loader component
 - [x] Add seperate nav component

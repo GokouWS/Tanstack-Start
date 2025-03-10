@@ -7,8 +7,12 @@ import "@testing-library/jest-dom";
 describe("Greeting", () => {
   it("renders default greeting", () => {
     render(<Greeting />);
-    expect(screen.getByText("Hello, World")).toBeInTheDocument();
+    expect(screen.getByText("Hello, World!")).toBeInTheDocument();
   });
 
-  // it("renders greeting with a name", () => {})
+  it("renders greeting with a name", () => {
+    render(<Greeting name="Will" />);
+    const text = screen.getByText("Hello, Will!");
+    expect(text).toBeInTheDocument();
+  });
 });

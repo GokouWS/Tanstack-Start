@@ -1,4 +1,5 @@
-import { query } from "./_generated/server";
+import { v } from "convex/values";
+import { mutation, query } from "./_generated/server";
 
 export const getGlobalCount = query({
   args: {},
@@ -20,5 +21,13 @@ export const list = query({
         };
       }),
     );
+  },
+});
+
+export const incrementGlobalCount = mutation({
+  args: { amount: v.number() },
+  handler: async (ctx, { amount }) => {
+    const count = await ctx.db.query("count").first();
+    count && (await ctx.db.patch(count._id, { count: count.count + amount }));
   },
 });

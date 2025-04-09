@@ -10,17 +10,18 @@
 - [ ] Decide on a set folder structure, mainly for api routes, db, server functions
 - [x] Add auth (likely clerk)
 - [x] Add DB/ORM (or branches multiple) added convex
-- [ ] Add superjson
+- [ ] Add superjson? (likely not required with convex)
 - [ ] Add seo
 - [x] Add a protected route
 - [x] Add and configure vitest and react testing library
 - [ ] Add and configure convex-test
 - [x] Add a loader component
 - [x] Add seperate nav component
-- [ ] Add a global counter component
-- [ ] Add a counter component that is stored in each user
+- [x] Add a global counter component
+- [x] Add a counter component that is stored in each user (Profile page)
 - [x] Configure webhooks for storing clerk users in convex DB
 - [ ] Add a theme toggle
+- [ ] Add vercel integration for hosting
 
 ## Issues
 

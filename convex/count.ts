@@ -31,3 +31,26 @@ export const incrementGlobalCount = mutation({
     count && (await ctx.db.patch(count._id, { count: count.count + amount }));
   },
 });
+
+export const incrementUserCount = mutation({
+  args: { amount: v.number() },
+  handler: async (ctx, { amount }) => {
+    const identity = await ctx.auth.getUserIdentity();
+    if (!identity) {
+      throw new Error("Not authenticated");
+    }
+
+    const user = await ctx.db
+      .query("users")
+      .withIndex("byExternalId", (q) => q.eq("externalId", identity.subject))
+      .first();
+
+    if (!user) {
+      throw new Error("User not found");
+    }
+
+    await ctx.db.patch(user._id, {
+      count: (user.count ?? 0) + amount,
+    });
+  },
+});

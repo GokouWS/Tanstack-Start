@@ -10,4 +10,16 @@ describe("Counter", () => {
     const text = screen.getByText("Cannot find count");
     expect(text).toBeInTheDocument();
   });
+
+  it("renders on count", () => {
+    render(<Counter count={1} incrementFn={() => {}} />);
+    const text = screen.getByText("Add 1 to 1?");
+    expect(text).toBeInTheDocument();
+  });
+
+  it("renders with zero count", () => {
+    render(<Counter count={0} incrementFn={() => {}} />);
+    const text = screen.getByText("Add 1 to 0?");
+    expect(text).toBeInTheDocument();
+  });
 });

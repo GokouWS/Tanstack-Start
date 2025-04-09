@@ -8,13 +8,13 @@ const Counter = ({ count, incrementFn }: CounterProps) => {
   return (
     <Button
       type="button"
-      disabled={!count}
+      // Remove the disabled check since 0 is a valid count
       onClick={() => {
         incrementFn();
       }}
       className="h-10 w-full bg-(--grape)"
     >
-      {count ? `Add 1 to ${count}?` : "Cannot find count"}
+      {count !== undefined ? `Add 1 to ${count}?` : "Cannot find count"}
     </Button>
   );
 };

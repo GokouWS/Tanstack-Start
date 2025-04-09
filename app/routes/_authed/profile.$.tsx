@@ -21,7 +21,6 @@ function RouteComponent() {
   return (
     <div className="p-4">
       <Greeting name={user?.name} />
-      {JSON.stringify(user)}
       <div className="mt-6">
         <h2 className="mb-2 text-xl font-semibold">Your Personal Counter</h2>
         <Counter count={user?.count} incrementFn={() => mutate({ amount: 1 })} />
